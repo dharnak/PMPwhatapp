@@ -1,0 +1,144 @@
+/* Background with animated gradient and floating confetti */
+.thankyou-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(-45deg, #e0f7fa, #fce4ec, #fffde7, #e8f5e9);
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+  overflow: hidden;
+  position: relative;
+  perspective: 1200px;
+}
+
+/* Main thank you card */
+.thankyou-box {
+  text-align: center;
+  background: #ffffffee;
+  padding: 60px 80px;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  animation: popUp 1.2s ease forwards;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.thankyou-box:hover {
+  transform: rotateY(5deg) rotateX(3deg);
+}
+
+/* Title with glowing effect */
+.thankyou-title {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  text-shadow: 0 0 10px #ffeb3b;
+  animation: pulseGlow 2s infinite ease-in-out alternate;
+}
+
+/* Subtext tagline */
+.thankyou-tagline {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 25px;
+  font-style: italic;
+}
+
+/* Thank you image */
+.thankyou-image {
+  width: 60%;
+  max-width: 400px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.thankyou-image:hover {
+  transform: scale(1.05);
+}
+
+/* WhatsApp Join button */
+.thankyou-link {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #25d366;
+  color: #fff;
+  padding: 14px 32px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+  transition: all 0.4s ease;
+}
+
+.thankyou-link:hover {
+  background-color: #1ebd5b;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(30, 189, 91, 0.5);
+}
+
+/* Confetti animation using pseudo elements */
+.thankyou-container::before,
+.thankyou-container::after {
+  content: '🎉✨🎈🎊💫';
+  font-size: 2rem;
+  position: absolute;
+  animation: floatSymbols 10s linear infinite;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.thankyou-container::after {
+  animation-delay: 5s;
+}
+
+/* Buttons */
+.back-home {
+  display: inline-block;
+  margin-top: 15px;
+  background-color: #1d72b8;
+  color: #fff;
+  padding: 10px 24px;
+  font-size: 1rem;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.back-home:hover {
+  background-color: #155a96;
+}
+
+/* Keyframes */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes popUp {
+  from { opacity: 0; transform: scale(0.7) rotateX(-10deg); }
+  to { opacity: 1; transform: scale(1) rotateX(0); }
+}
+
+@keyframes pulseGlow {
+  from { text-shadow: 0 0 5px #fbc02d; }
+  to { text-shadow: 0 0 20px #ffeb3b, 0 0 30px #ffe082; }
+}
+
+@keyframes floatSymbols {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    top: 120%;
+    opacity: 0;
+  }
+}
